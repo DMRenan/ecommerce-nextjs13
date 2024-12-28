@@ -49,12 +49,17 @@ export const StoreModal = () => {
     }
   };
 
+  const handleClose = () => {
+    form.reset();
+    storeModal.onClose();
+  };
+
   return (
     <Modal
       title="Create store"
       description="Add a new store to manage products and categories"
       isOpen={storeModal.isOpen}
-      onClose={storeModal.onClose}
+      onClose={handleClose}
     >
       <div>
         <div className="space-y-4 py-2 pb-4">
@@ -81,7 +86,8 @@ export const StoreModal = () => {
                 <Button
                   disabled={loading}
                   variant="outline"
-                  onClick={storeModal.onClose}
+                  onClick={handleClose}
+                  type="button"
                 >
                   Cancel
                 </Button>
