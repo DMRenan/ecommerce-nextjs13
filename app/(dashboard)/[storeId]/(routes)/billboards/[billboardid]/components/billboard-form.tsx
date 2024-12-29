@@ -111,6 +111,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
         <Heading title={title} description={description} />
         {initialData && (
           <Button
+            disabled={loading}
             variant="destructive"
             size="icon"
             onClick={() => setOpen(true)}
