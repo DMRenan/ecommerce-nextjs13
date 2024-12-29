@@ -25,7 +25,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
     setIsMounted(true);
   }, []);
 
-  const onUpload = (result: any) => {
+  const handleSuccess = (result: any) => {
     onChange(result.info.secure_url);
   };
 
@@ -39,7 +39,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
         {value.map((url) => (
           <div
             key={url}
-            className="relative w-[200px] rounded-md overflow-hidden"
+            className="relative w-[200px] h-[200px] rounded-md overflow-hidden"
           >
             <div className="z-10 absolut top-2 right-2">
               <Button
@@ -55,7 +55,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
           </div>
         ))}
       </div>
-      <CldUploadWidget onUpload={onUpload} uploadPreset="khd2rlom">
+      <CldUploadWidget onSuccess={handleSuccess} uploadPreset="khd2rlom">
         {({ open }) => {
           const onClick = () => {
             open();
