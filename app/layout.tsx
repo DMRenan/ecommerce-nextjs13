@@ -2,7 +2,6 @@ import { Inter } from "next/font/google";
 import { Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
-import prismadb from "@/lib/prismadb";
 import { ToasterProvider } from "@/providers/toast-provider";
 import { ModalProvider } from "@/providers/modal-provider";
 
@@ -18,7 +17,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const store = prismadb.store;
   return (
     <ClerkProvider>
       <html lang="en">
