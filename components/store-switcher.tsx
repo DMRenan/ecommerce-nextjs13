@@ -45,8 +45,8 @@ export default function StoreSwitcher({
   const router = useRouter();
 
   const formattedItems = items.map((item) => ({
-    label: item.name.toString(),
-    value: item.id.toString(),
+    label: item.name,
+    value: item.id,
   }));
 
   const currentStore = formattedItems.find(
@@ -55,8 +55,7 @@ export default function StoreSwitcher({
 
   const [open, setOpen] = useState(false);
 
-  type StoreOption = { value: string; label: string };
-  const onStoreSelect = (store: StoreOption) => {
+  const onStoreSelect = (store: { value: string; label: string }) => {
     setOpen(false);
     router.push(`/${store.value}`);
   };

@@ -4,15 +4,13 @@ import { BillboardForm } from "@/app/(dashboard)/[storeId]/(routes)/billboards/[
 const BillboardPage = async ({
   params,
 }: {
-  params: { billboardId?: string };
+  params: { billboardId: string };
 }) => {
-  const billboard = params.billboardId
-    ? await prismadb.billboard.findUnique({
-        where: {
-          id: params.billboardId,
-        },
-      })
-    : null;
+  const billboard = await prismadb.billboard.findFirst({
+    where: {
+      id: params.billboardId,
+    },
+  });
 
   return (
     <div className="flex-col">
