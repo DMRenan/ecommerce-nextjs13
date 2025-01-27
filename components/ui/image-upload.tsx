@@ -25,13 +25,13 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
     setIsMounted(true);
   }, []);
 
-  const handleSuccess = (result: any) => {
-    onChange(result.info.secure_url);
-  };
+const onUpload = (result: any) => {
+onChange(result.info.secure_url);
+}
 
-  if (!isMounted) {
-    return null;
-  }
+if (!isMounted) {
+  return null;
+}
 
   return (
     <div>
@@ -55,7 +55,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
           </div>
         ))}
       </div>
-      <CldUploadWidget onSuccess={handleSuccess} uploadPreset="khd2rlom">
+      <CldUploadWidget onUpload={onUpload} uploadPreset="khd2rlom">
         {({ open }) => {
           const onClick = () => {
             open();
