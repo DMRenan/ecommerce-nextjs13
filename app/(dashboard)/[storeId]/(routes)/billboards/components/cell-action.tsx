@@ -1,6 +1,6 @@
 "use client";
 
-import { BillboardColumn } from "@/app/(dashboard)/[storeId]/(routes)/billboards/components/columns";
+import { BillboardColumn } from "./columns";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -28,7 +28,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
 
   const onCopy = (id: string) => {
     navigator.clipboard.writeText(id);
-    toast.success("Billboard id copied to the clipboard.");
+    toast.success("Billboard Id copied to the clipboard.");
   };
 
   const onDelete = async () => {
@@ -36,6 +36,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
       setLoading(true);
       await axios.delete(`/api/${params.storeId}/billboards/${data.id}`);
       router.refresh();
+      router.push(`/${params.storeId}/billboards`);
       toast.success("Billboard deleted");
     } catch (error) {
       toast.error(
@@ -62,7 +63,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
             <MoreHorizontal className="h-4 w-4" />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent>
+        <DropdownMenuContent align="end">
           <DropdownMenuLabel>Actions</DropdownMenuLabel>
           <DropdownMenuItem onClick={() => onCopy(data.id)}>
             <Copy className="mr-2 h-4 w-4" />
