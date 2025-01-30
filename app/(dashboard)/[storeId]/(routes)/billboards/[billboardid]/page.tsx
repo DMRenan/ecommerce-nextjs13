@@ -2,7 +2,7 @@ import prismadb from "@/lib/prismadb";
 import { BillboardForm } from "@/app/(dashboard)/[storeId]/(routes)/billboards/[billboardid]/components/billboard-form";
 
 const BillboardPage = async ({
-  params,
+  params
 }: {
   params: { billboardId: string }
 }) => {
